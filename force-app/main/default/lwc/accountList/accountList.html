@@ -1,0 +1,15 @@
+<!-- lwcComponent.html -->
+<template>
+    <lightning-card title="Accounts List">
+        <template if:true={accounts}>
+            <ul>
+                <template for:each={accounts} for:item="account">
+                    <li key={account.Id}>{account.Name}</li>
+                </template>
+            </ul>
+        </template>
+        <template if:true={error}>
+            <p>Error: {error}</p>
+        </template>
+    </lightning-card>
+</template>
