@@ -1,0 +1,11 @@
+<template>
+    <lightning-card class="slds-m-around_medium">
+    <lightning-input label="Enter Number of Records:" placeholder="Enter Number of records" onchange={setCount} type="number"></lightning-input>
+    </lightning-card>
+    <template for:each={accountsToDisplay} for:item="account">
+        <lightning-card key={account.Id}>
+            {account.Name}
+            {account.AnnualRevenue}
+        </lightning-card>
+    </template>
+</template>
