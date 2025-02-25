@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Contact Form">
+      <div class="slds-m-around_medium" style="padding:20px">
+        <lightning-input type="text" onchange={handleFirstNameChange} placeholder="Enter FirstName" required></lightning-input>
+        <lightning-input type="text" onchange={handleLastNameChange} placeholder="Enter LastName" required></lightning-input>
+        <lightning-input type="number" onchange={handlePhoneChange} placeholder="Enter Phone No." required></lightning-input>
+        <lightning-input type="email" onchange={handleEmailChange} placeholder="Enter Email-Id" required></lightning-input>
+      </div>
+      <button class="slds-button slds-button_brand" style="margin-left: 40px;" onclick={handleSubmit}>Submit</button>
+      <div class="slds-m-around_medium" style="padding:40px">
+       <p>Entered Name:- {contactInfo.name}</p>
+       <p>Entered Phone No:- {contactInfo.phone}</p>
+       <p>Entered Email-Id:- {contactInfo.email}</p>
+      </div>
+    </lightning-card>
+</template>

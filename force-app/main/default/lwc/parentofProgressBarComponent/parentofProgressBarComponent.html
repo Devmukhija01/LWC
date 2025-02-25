@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Progress Bar">
+        <div class="slds-m-around_medium">
+            <lightning-input type="range" onchange={handleProgressBarChange} placeholder="Enter The Value"></lightning-input>
+        </div>
+        <p style="padding: 20px;">Progress Bar Value:- {value}</p>
+        <c-childof-progress-bar-component value={value}></c-childof-progress-bar-component>
+    </lightning-card>
+</template>

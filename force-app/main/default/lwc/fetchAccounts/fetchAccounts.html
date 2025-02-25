@@ -1,0 +1,11 @@
+<template>
+    <lightning-card title="Account List" icon-name="utility-user" style="background-color: white;">
+            <div style="height: 300px;">
+                <lightning-datatable
+                        key-field="id"
+                        data={accountsToDisplay}
+                        columns={columns}>
+                </lightning-datatable>
+            </div>
+    </lightning-card>
+</template>
