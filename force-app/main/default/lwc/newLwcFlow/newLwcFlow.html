@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="User Input Example">
+        <div class="slds-p-horizontal_medium">
+            <!-- Input field for name -->
+            <lightning-input label="Enter your name" value={name} onchange={handlenameInputChange}></lightning-input>
+            <lightning-input label="Enter your phone no." value={phone} onchange={handlephoneInputChange}></lightning-input>
+            <lightning-input label="Enter your address" value={address} onchange={handleaddressInputChange}></lightning-input>
+            <!-- Button to get name -->
+            <lightning-button label="Get Name" onclick={handleButtonClick} class="slds-m-top_medium"></lightning-button>
+
+            <!-- Display the name entered by user -->
+            <template if:true={userInfo}>
+                <p class="slds-m-top_medium" id="name">You entered: {userInfo.name}</p>
+                <p class="slds-m-top_medium">You entered: {userInfo.phoneNo}</p>
+                <p class="slds-m-top_medium">You entered: {userInfo.address}</p>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -12,7 +12,7 @@ export default class Parent extends LightningElement {
     }
     disconnectedCallback()
     {
-        console.log('Parent Connected CallBack Called');
+        console.log('Parent DisConnected CallBack Called');
     }
     renderedCallback()
     {

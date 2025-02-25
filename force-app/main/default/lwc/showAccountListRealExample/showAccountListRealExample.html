@@ -1,0 +1,18 @@
+<template>
+        <lightning-card variant="Narrow" title="Account List" class="slds-p-around_medium" icon-name="standard:account">
+            <div class="slds-p-around_medium">
+            <Template for:each={accounts.data} for:item="account">
+                <a href="#" key={account.Id}>
+             <lightning-layout>
+                <lightning-layout-item>
+                 <div class="slds-p-around_medium slds-box">
+                    <p>Name: {account.Name}</p>
+                    <p>AnnualRevenue: {account.AnnualRevenue}</p>
+                 </div>
+                </lightning-layout-item>
+             </lightning-layout>
+            </a>
+        </Template>
+    </div>
+        </lightning-card>
+</template>

@@ -12,7 +12,7 @@ export default class GrandParent extends LightningElement {
     }
     disconnectedCallback()
     {
-        console.log('Grand Parent Connected CallBack Called');
+        console.log('Grand Parent DisConnected CallBack Called');
     }
     renderedCallback()
     {
