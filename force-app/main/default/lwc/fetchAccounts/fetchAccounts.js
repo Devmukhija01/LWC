@@ -18,7 +18,7 @@ export default class FetchAccounts extends LightningElement {
         if(error)
         {
             this.error=error;
-            this.acc
+            this.accountsToDisplay=undefined;
         }
     }
 }
