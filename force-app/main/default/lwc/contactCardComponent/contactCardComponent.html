@@ -1,16 +1,31 @@
-<template>
-    <lightning-card title="Contact Form">
-      <div class="slds-m-around_medium" style="padding:20px">
-        <lightning-input type="text" onchange={handleFirstNameChange} placeholder="Enter FirstName" required></lightning-input>
-        <lightning-input type="text" onchange={handleLastNameChange} placeholder="Enter LastName" required></lightning-input>
-        <lightning-input type="number" onchange={handlePhoneChange} placeholder="Enter Phone No." required></lightning-input>
-        <lightning-input type="email" onchange={handleEmailChange} placeholder="Enter Email-Id" required></lightning-input>
+<template >
+  <template if:true={contact}>
+      <div class="slds-p-around_medium">
+          <template if:false={editMode}>
+              <div class="slds-grid slds-gutters">
+                  <div class="slds-col slds-size_1-of-2" style="background-color: white; border:1px solid black;padding: 15px;width:100%; border-radius: 5px 5px 5px 5px; box-shadow: 1px 1px 1px 1px;">
+                      <p style="padding: 10px;"><b>Name:</b> {contact.FirstName} {contact.LastName}</p>
+                      <p style="padding: 10px;"><b>Email:</b> {contact.Email}</p>
+                      <p style="padding: 10px;"><b>Phone:</b> {contact.Phone}</p>
+                      <lightning-button label="Edit" onclick={handleEdit} style="padding: 10px;"></lightning-button>
+                  </div>
+                </div>
+          </template>
+          <template if:true={editMode}>
+            <div style="background-color: white; border:1px solid black;padding: 15px; width:100%; border-radius: 5px 5px 5px 5px; box-shadow: 1px 1px 1px 1px;">
+              <lightning-input type="text" label="First Name" name="  FirstName" value={tempContact.FirstName} onchange={handleInputChange} style="padding: 10px;"></lightning-input>
+              <lightning-input type="text" label="Last Name" name="LastName" value={tempContact.LastName} onchange={handleInputChange} style="padding: 10px;"></lightning-input>
+              <lightning-input type="email" label="Email" name="Email" value={tempContact.Email} onchange={handleInputChange} style="padding: 10px;"></lightning-input>
+              <lightning-input type="tel" label="Phone" name="Phone" value={tempContact.Phone} onchange={handleInputChange} style="padding: 10px;"></lightning-input>
+              <lightning-button label="Save" variant="brand" onclick={handleSave} style="padding: 10px;"></lightning-button>
+              <lightning-button label="Cancel" onclick={handleCancel} style="padding: 10px;"></lightning-button>
+            </div>
+          </template>
       </div>
-      <button class="slds-button slds-button_brand" style="margin-left: 40px;" onclick={handleSubmit}>Submit</button>
-      <div class="slds-m-around_medium" style="padding:40px">
-       <p>Entered Name:- {contactInfo.name}</p>
-       <p>Entered Phone No:- {contactInfo.phone}</p>
-       <p>Entered Email-Id:- {contactInfo.email}</p>
+  </template>
+  <template if:true={error}>
+      <div class="slds-p-around_medium">
+          <p>Error loading contact details.</p>
       </div>
-    </lightning-card>
+  </template>
 </template>

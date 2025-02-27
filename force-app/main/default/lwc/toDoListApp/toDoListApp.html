@@ -1,16 +1,16 @@
 <template>
-    <lightning-card>
-        <div style="padding: 20px;">
-            <h2>ADD TASK</h2>
-            <lightning-input type="text" name='name' placeholder="Enter Your Task name" onchange={handleEnterTask}></lightning-input>
-            <lightning-input type="text" name='priority' placeholder="Enter Your Task priority" onchange={handleEnterTask}></lightning-input>
-            <button class="slds-button slds-button_brand" onclick={handleAddTask}>Add Task</button>
-        </div>
-    </lightning-card>
-    <lightning-card if:true={taskList.task}>
-        <div class="slds-m-around_medium">
-         <p>{taskList.task}</p>
-         <button class="slds-button slds-button_brand" onclick={handleRemoveTask}>Delete</button>
+    <lightning-card title="To-Do List" icon-name="utility:task">
+        <div class="container">
+            <lightning-input type="text" label="New Task" value={newTask} onchange={handleInputChange}></lightning-input>
+            <lightning-button label="Add" onclick={addTask} variant="brand"></lightning-button>
+            <div class="task-list">
+                <template for:each={tasks} for:item="task">
+                    <li key={task.id} class="task-item">
+                        <span>{task.name}</span>
+                        <lightning-button label="Delete" onclick={deleteTask} data-id={task.id} variant="destructive"></lightning-button>
+                    </li>
+                </template>
+            </div>
         </div>
     </lightning-card>
 </template>

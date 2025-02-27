@@ -1,33 +1,28 @@
-import { LightningElement } from 'lwc';
-import gettasks from '@salesforce/apex/ToDoList.methodName';
-import newtaskcreated from '@salesforce/apex/ToDoList.taskCreation';
-export default class ToDoListApp extends LightningElement {
-    name='';
-    priority='';
-//    @wire(gettasks)
-//    handleTasks({data,error})
-//    {
+import { LightningElement, track } from 'lwc';
 
-//    }
-   handleEnterTask(event)
-   {
-    const field=event.target.value;
-    if(field==='name')
-    {
-        this.name=event.target.value;
-    }
-    else if(field==='priority')
-    {
-        this.priority=event.target.value;
-    }
-   }
-   handleAddTask()
-   {
-    newtaskcreated({
-        taskName : this.name,
-        taskPriority:this.priority
+export default class TodoList extends LightningElement {
+    @track tasks = []; // Array to store tasks
+    newTask = ''; // Input field value
 
-    })
-    
-   }
+    // Update newTask when user types
+    handleInputChange(event) {
+        this.newTask = event.target.value;
+    }
+
+    // Add task to the list
+    addTask() {
+        if (this.newTask.trim() !== '') {
+            this.tasks = [
+                ...this.tasks,
+                { id: Date.now(), name: this.newTask }
+            ];
+            this.newTask = ''; // Clear input field
+        }
+    }
+
+    // Delete task from the list
+    deleteTask(event) {
+        const taskId = event.target.dataset.id;
+        this.tasks = this.tasks.filter(task => task.id != taskId);
+    }
 }

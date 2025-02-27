@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title="TO DO LIST" icon-name="standard:task">
+        <div class="slds-m-around_medium" style="background-color: white; border:1px solid black;padding: 15px; border-radius: 5px 5px 5px 5px; box-shadow: 1px 1px 1px 1px;">
+            <lightning-input label="Task Name" value={taskName} onchange={handleNameChange} style="padding:15px;"></lightning-input>
+            <lightning-textarea label="Task Description" value={taskDescription} onchange={handleDescriptionChange} style="padding:15px;"></lightning-textarea>
+            <lightning-button label="Add Task" variant="brand" onclick={handleAddTask} class="slds-m-top_medium" style="padding:15px;"></lightning-button>
+        </div>
+        
+        <template if:true={tasks}>
+            <ul class="slds-m-around_medium">
+                <p style="Text-align:center; font-size:medium">Tasks List</p>
+                <template for:each={tasks} for:item="task">
+                    <div  key={task.Id} style="padding:10px;">
+                        <li style="background-color: white; border:1px solid black;padding: 15px;width:100%; border-radius: 5px 5px 5px 5px; box-shadow: 0.9px 0.9px 0.9px 0.9px;">
+                            <strong>{task.Subject}</strong> - {task.Description}
+                            <lightning-button-icon icon-name="utility:delete" class="slds-m-left_small" onclick={handleDeleteTask} data-id={task.Id}></lightning-button-icon>
+                        </li>
+                    </div>
+                </template>
+            </ul>
+        </template>
+    </lightning-card>
+</template>
