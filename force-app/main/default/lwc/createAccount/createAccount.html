@@ -1,0 +1,9 @@
+<template>
+    <lightning-card title="Create Account">
+        <div class="slds-m-around_medium" style="background-color: white; border:1px solid black;padding: 15px;width:80%; border-radius: 5px 5px 5px 5px; box-shadow: 0.9px 0.9px 0.9px 0.9px;">
+            <lightning-input type="Text" placeholder="Enter Account Name" onchange={handleAccountName} style="padding: 10px;"></lightning-input>
+            <lightning-input type="Text" placeholder="Enter Industry" onchange={handleIndustry} style="padding: 10px;"></lightning-input>
+            <lightning-button variant="brand" label="Submit" title="Primary action" onclick={handleClick} class="slds-m-left_x-small" style="padding:10px;"></lightning-button>
+        </div>
+    </lightning-card>
+</template>
