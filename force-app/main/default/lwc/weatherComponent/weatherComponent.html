@@ -1,0 +1,35 @@
+<template>
+    <div class="weather-app">
+        <lightning-card title="🌤 Weather App" icon-name="utility:world" class="weather-card">
+            <div class="input-container">
+                <lightning-input type="text" placeholder="Enter City Name" value={cityName} onchange={handleInputChange} class="input-field"></lightning-input>
+                <div class="button-group">
+                    <lightning-button label="Get Weather" variant="brand" onclick={fetchWeather} class="Get-Weather-Button"></lightning-button>
+                    <lightning-button label="Use My Location" variant="brand" onclick={fetchWeatherByLocation} class="Current-Location-Button"></lightning-button>
+                </div>
+            </div>
+        </lightning-card>
+
+        <template if:true={openGetWeather}>
+            <template if:true={weatherData}>
+                <div class="weather-info">
+                    <h1>{weatherData.name}</h1>
+                    <p><strong>🌡 Temperature:</strong> {weatherData.main.temp}°C</p>
+                    <p><strong>💧 Humidity:</strong> {weatherData.main.humidity}%</p>
+                    <p><strong>🌬 Wind Speed:</strong> {weatherData.wind.speed}m/s</p>
+                </div>
+            </template>
+        </template>
+
+        <template if:true={openCurrentGetWeather}>
+            <template if:true={currentWeatherData}>
+                <div class="weather-info">
+                    <h1>Current Location Weather : {currentWeatherData.name}</h1>
+                    <p><strong>🌡 Temperature:</strong> {currentWeatherData.main.temp}°C</p>
+                    <p><strong>💧 Humidity:</strong> {currentWeatherData.main.humidity}%</p>
+                    <p><strong>🌬 Wind Speed:</strong> {currentWeatherData.wind.speed}m/s</p>
+                </div>
+            </template>
+        </template>
+    </div>
+</template>
