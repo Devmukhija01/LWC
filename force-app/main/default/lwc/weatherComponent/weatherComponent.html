@@ -1,6 +1,7 @@
 <template>
     <div class="weather-app">
         <lightning-card title="🌤 Weather App" icon-name="utility:world" class="weather-card">
+            <img src={myimg}>
             <div class="input-container">
                 <lightning-input type="text" placeholder="Enter City Name" value={cityName} onchange={handleInputChange} class="input-field"></lightning-input>
                 <div class="button-group">
@@ -14,6 +15,7 @@
             <template if:true={weatherData}>
                 <div class="weather-info">
                     <h1>{weatherData.name}</h1>
+                    <img src={myimg2}>
                     <p><strong>🌡 Temperature:</strong> {weatherData.main.temp}°C</p>
                     <p><strong>💧 Humidity:</strong> {weatherData.main.humidity}%</p>
                     <p><strong>🌬 Wind Speed:</strong> {weatherData.wind.speed}m/s</p>

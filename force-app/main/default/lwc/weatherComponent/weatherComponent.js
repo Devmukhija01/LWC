@@ -1,6 +1,7 @@
 import { LightningElement, track } from 'lwc';
 import getWeatherData from '@salesforce/apex/WeatherController.getWeather';
 import getWeatherByCoordinates from '@salesforce/apex/WeatherController.getWeatherByCoordinates';
+import images from '@salesforce/resourceUrl/images';
 
 export default class WeatherComponent extends LightningElement {
     @track cityName = '';
@@ -8,6 +9,8 @@ export default class WeatherComponent extends LightningElement {
     @track currentWeatherData;
     @track openGetWeather = false;
     @track openCurrentGetWeather = false;
+    @track myimg = `${images}/images/OIP.jpg`;
+    @track myimg2= `${images}/images/rainy.jpg`;
 
     handleInputChange(event) {
         this.cityName = event.target.value;
